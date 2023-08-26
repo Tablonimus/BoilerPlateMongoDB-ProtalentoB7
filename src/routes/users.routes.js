@@ -3,8 +3,15 @@ const router = Router();
 const User = require("../models/user");
 //tenemos que conectar nuestro model correspondiente
 
-router.get("/", (req, res) => {
-  res.send("/users/");
+router.get("/", async (req, res) => {
+  try {
+    const allUsers = await User.find();
+    console.log(allUsers);
+    res.status(200).json(allUsers);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
 });
 
 router.post("/", async (req, res) => {
