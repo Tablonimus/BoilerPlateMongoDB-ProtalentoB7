@@ -5,6 +5,7 @@ const connection = require("./src/db.js");
 
 connection();
 
+
 server.listen(PORT, () => {
   console.log("Servidor levantado correctamente en el puerto ", PORT);
 });

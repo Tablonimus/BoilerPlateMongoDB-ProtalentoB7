@@ -4,6 +4,7 @@
   "description": "BoilerPlateMongoDB-ProtalentoB7",
   "main": "index.js",
   "scripts": {
+    "dev":"npm cache clean --force && nodemon ./index.js",
     "start": "nodemon ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
