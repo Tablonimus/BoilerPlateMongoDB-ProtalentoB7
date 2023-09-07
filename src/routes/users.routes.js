@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const User = require("../models/user");
-//tenemos que conectar nuestro model correspondiente
+const User = require("../models/User"); //tenemos que conectar nuestro model correspondiente
 
 router.get("/", async (req, res) => {
   try {
