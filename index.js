@@ -3,9 +3,13 @@ const { PORT } = process.env;
 const server = require("./src/app.js");
 const connection = require("./src/db.js");
 
+
+//-------------------------//
 connection();
+//require de esas funciones
 
 
+//----------------------//
 server.listen(PORT, () => {
   console.log("Servidor levantado correctamente en el puerto ", PORT);
 });
