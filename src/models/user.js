@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+// import bcrypt from "bcryptjs";
 
 const usersSchema = new mongoose.Schema(
   {
@@ -17,6 +19,14 @@ const usersSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+usersSchema.statics.encryptPassword = async (password) => {
+const salt = await bcrypt.genSalt(10); //cantidad de rondas que va a dar el encriptado
+return await bcrypt.hash(password, salt);} //lo que encripto
+
+usersSchema.statics.comparePassword = async (password, receivedPassword) => {
+  return await bcrypt.compare(password, receivedPassword);
+};
 
 const User = mongoose.model("User", usersSchema);
 

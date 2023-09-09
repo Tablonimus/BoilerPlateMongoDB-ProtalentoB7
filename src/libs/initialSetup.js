@@ -12,7 +12,7 @@ const createRoles = async () => {
 
     console.log("Documentos contados", count);
 
-    if (count > 0) return "Ya existian roles creados"; //puede ir el return solo
+    if (count > 0) return "Roles sincronizados"; //puede ir el return solo
 
     //Creamos los valores por defecto
 
@@ -38,14 +38,14 @@ const createAdmin = async () => {
   if (userFound) return;
 
   //busco los roles---
-  const roles = await Role.find({ name: { $in: ["admin", "moderator"] } }); // me va a devolver un array de roles [{_id:4sd7a896, name:admin, createdAt:},{name:moderator}]
+  const rolesFound = await Role.find({ name: { $in: ["admin", "moderator"] } }); // me va a devolver un array de roles [{_id:4sd7a896, name:admin, createdAt:},{name:moderator}]
 
   //creo el usuario
   const newUser = await User.create({
     username: ADMIN_USERNAME,
     email: ADMIN_EMAIL,
     password: ADMIN_PASSWORD,
-    roles: roles.map((role) => role._id), //[123123156as4d0,a4s15d5as6d4as]
+    roles: rolesFound.map((role) => role._id), //[123123156as4d0,a4s15d5as6d4as]
   });
 
   console.log("new Admin created:", newUser.email);
