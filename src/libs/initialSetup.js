@@ -45,7 +45,7 @@ const createAdmin = async () => {
     username: ADMIN_USERNAME,
     email: ADMIN_EMAIL,
     password: ADMIN_PASSWORD,
-    roles: rolesFound.map((role) => role._id), //[123123156as4d0,a4s15d5as6d4as]
+    roles: rolesFound.map((role) => role._id), // [123123156as4d0,a4s15d5as6d4as]
   });
 
   console.log("new Admin created:", newUser.email);

@@ -5,7 +5,7 @@ const connection = require("./src/db.js");
 const {createAdmin,createRoles} = require("./src/libs/initialSetup.js")
 
 
-/* ------------------------------------ */
+/* -----------base de datos------------------------- */
 connection();
 //crear roles
 createRoles()

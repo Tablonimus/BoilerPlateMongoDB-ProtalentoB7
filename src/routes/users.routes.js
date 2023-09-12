@@ -23,4 +23,6 @@ router.get("/", async (req, res) => {
 //POST CREAR USUARIO
 router.post("/", createUser);
 
+
+
 module.exports = router;

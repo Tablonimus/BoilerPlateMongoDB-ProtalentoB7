@@ -5,12 +5,12 @@ const bcrypt = require("bcrypt");
 const createUser = async (req, res) => {
   try {
     //logica para crear usuario
-    const { username, email, password, roles } = req.body; //["admin"]
+    const { username, email, password, roles } = req.body; //["admin"] //req.params y req.query => vienen desde el endpoint
 
     //buscar los roles del body en la DB
-    
-    const defaultRol = "user"; //<=========== A PRUEBA
-    const rolesFound = await Role.find({ name: { $in: roles || defaultRol } });//O UNO O EL OTRO
+    const defaultRole = ["user"]; //<=========== A PRUEBA
+    const rolesFound = await Role.find({ name: { $in: roles || defaultRole } }); //O UNO O EL OTRO  //<=========== A PRUEBA
+
 
     //crear la instancia de el usuario
     const user = new User({
@@ -36,6 +36,7 @@ const createUser = async (req, res) => {
       mail: newUser.email,
       roles: newUser.roles,
     });
+    
   } catch (error) {
     console.log(error);
     res.status(400).json(error);
