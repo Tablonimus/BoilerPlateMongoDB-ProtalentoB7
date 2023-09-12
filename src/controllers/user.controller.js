@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const createUser = async (req, res) => {
   try {
     //logica para crear usuario
-    const { username, email, password, roles } = req.body; //["admin"] //req.params y req.query => vienen desde el endpoint
+    const { username, email, password, roles } = req.body; //["admin"] //req.params y req.query => vienen desde el endpoint   'o  se los puedo agregar yo en el middleware
 
     //buscar los roles del body en la DB
     const defaultRole = ["user"]; //<=========== A PRUEBA

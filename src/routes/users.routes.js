@@ -2,11 +2,13 @@ const { Router } = require("express");
 const router = Router();
 const User = require("../models/User"); //tenemos que conectar nuestro model correspondiente
 const { createUser } = require("../controllers/user.controller");
-
+const { verifyToken } = require("../middlewares/authJwt");
 
 //GET A TODOS
-router.get("/", async (req, res) => {
+router.get("/", verifyToken, async (req, res) => {
   try {
+    console.log(req);
+
     const allUsers = await User.find();
     console.log(allUsers);
     res.status(200).json(allUsers);
@@ -18,11 +20,7 @@ router.get("/", async (req, res) => {
 
 //GET USER BY ID O DE A UNO---
 
-
-
 //POST CREAR USUARIO
-router.post("/", createUser);
-
-
+router.post("/", verifyToken, createUser);
 
 module.exports = router;
